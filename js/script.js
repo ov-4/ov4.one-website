@@ -9,6 +9,7 @@ const config = {
         serverLogoImageFileName: "logo.png", /*This is a file name for logo in /images/ (If you upload new logo with other name, you must change this value)*/
         serverName: "ov4.one Crystal PvP", /*Server name*/
         serverIp: "ov4.one", /*Server IP (if you want to add online user counter, you must have true the enable-status and enable-query of server.properties)*/
+        rconIp: "global.ov4.one", // IP for rcon reqest
         discordServerID: "" /*Your server ID (if you want to add online user counter, you must have enabled Discord server widget)*/
     },
 
@@ -147,7 +148,8 @@ const getMinecraftOnlinePlayer = async () => {
     try {
         const serverIp = config.serverInfo.serverIp;
 
-        const apiUrl = `https://api.mcsrvstat.us/2/${serverIp}`;
+        //const apiUrl = `https://api.mcsrvstat.us/2/${serverIp}`;
+        const apiUrl = `https://api.mcsrvstat.us/2/${rconIp}`; // higher availability for api servers outside China
         let response = await fetch(apiUrl);
         let data = await response.json();
 
